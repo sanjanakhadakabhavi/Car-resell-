@@ -1,0 +1,54 @@
+create schema cars;
+use cars;
+-- Read DATA--
+
+select * from car_resell;
+
+
+-- Total Cars: To get a count of total records--
+
+select count(*) from car_resell;
+
+-- the manager ask the employee how many cars will be available   in 2023--
+
+select count(*) from car_resell where year = 2023;
+
+-- the manager asked the employee how many cars is available in 2020,2021,2022--
+
+select count(*) from car_resell where year = 2020; #74
+select count(*) from car_resell where year = 2021; #7
+select count(*) from car_resell where year = 2022; #7
+-- group by --
+
+select count(*) from car_resell where year in(2020,2021,2022) group by year;
+
+-- clint asked me to print total number of all cars by year .i dont see all details --
+
+select year, count(*) from car_resell group by year;
+
+-- client asked to car dealer agent how many deisel car are available in 2020--
+
+select count(*) from car_resell where year= 2020 and fuel ="Diesel"; #20
+
+-- client requested a car dealer agent how many petrol cars in 2020 --
+
+select count(*) from car_resell where year= 2020 and fuel ="Petrol"; #51
+
+-- the manager told the employee to gve print of all the fuel cars come by all years --
+
+select year , count(*) from car_resell where fuel="Petrol" group by year;
+select year , count(*) from car_resell where fuel="Diesel" group by year;
+select year , count(*) from car_resell where fuel="CNG" group by year;
+
+-- manager said there were more than 100 cars in a given year,which year had more than 100 m=cars? --
+
+select year,count(*) from car_resell group by year having count(*) >100;
+
+-- the manager said to employee all car count details between 2015 and 2023 complete list --
+
+select count(*) from car_resell where year between 2015 and 2023;
+
+-- the manager said to  employee all cars detail between 2015 and 2023 ;
+
+select * from car_resell where  year between 2015 and 2023 ;
+
